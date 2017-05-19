@@ -1,3 +1,3 @@
 source "https://rubygems.org"
 
-gem "backup", '~> 4.2.3'
+gem "backup", '~> 4.2.1'
