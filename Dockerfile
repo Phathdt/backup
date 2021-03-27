@@ -1,4 +1,4 @@
-FROM ruby:2.5-slim
+FROM ruby:2.6-slim
 
 ENV RUBY_VERSION 2.6
 #ENV PG_MAJOR 10
@@ -9,7 +9,7 @@ ENV RUBY_VERSION 2.6
 
 # install packages
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends build-essential ruby-dev bundler libxml2-dev libcurl4-openssl-dev vim postgresql-client && \
+RUN apt-get install -y --no-install-recommends build-essential ruby-dev bundler libxml2-dev libcurl4-openssl-dev vim postgresql-client-11 && \
     rm -rf /var/lib/apt/lists/*
 
 # Volumes - data to backup will be mapped to /data
