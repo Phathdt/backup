@@ -9,7 +9,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" | tee  
 
 # install packages
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends build-essential ruby-dev bundler libxml2-dev libcurl4-openssl-dev vim postgresql-client-13 && \
+RUN apt-get install -y --no-install-recommends build-essential ruby-dev bundler libxml2-dev libcurl4-openssl-dev vim postgresql-client-14 && \
     rm -rf /var/lib/apt/lists/*
 
 # Volumes - data to backup will be mapped to /data
