@@ -1,4 +1,4 @@
-FROM ruby:2.6-slim
+FROM ruby:2.6-slim-buster
 
 ENV RUBY_VERSION 2.6
 
@@ -19,7 +19,6 @@ VOLUME ["/data"]
 COPY . /root/Backup
 WORKDIR /root/Backup
 RUN gem install http_parser.rb && gem install unf_ext -v '0.0.6' && bundle install
-
 
 COPY bin/docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
