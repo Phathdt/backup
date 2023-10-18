@@ -16,10 +16,11 @@ RUN apt-get install -y --no-install-recommends build-essential ruby-dev bundler 
 VOLUME ["/data"]
 
 # Copy App
-COPY . /root/Backup
 WORKDIR /root/Backup
+COPY Gemfile .
 RUN gem install http_parser.rb && gem install unf_ext -v '0.0.6' && bundle install
 COPY fog-aws-201_storage_pr593.rb /usr/local/bundle/gems/fog-aws-2.0.1/lib/fog/aws/storage.rb
+COPY . /root/Backup
 
 COPY bin/docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
