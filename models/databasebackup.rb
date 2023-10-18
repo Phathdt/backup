@@ -7,6 +7,8 @@ Model.new(:databasebackup, ENV["BACKUP_NAME_DATABASE"]) do
     db.password           = ENV["DB_PASSWORD"]
     db.host               = ENV["DB_HOST"]
     db.port               = ENV["DB_PORT"]
+
+    db.additional_options = ["-j 10 "]
   end
 
   ##
