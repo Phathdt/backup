@@ -1,8 +1,0 @@
-.git
-.gitignore
-.ropeproject
-./media
-./static
-*.md
-/cache
-*.pyc
