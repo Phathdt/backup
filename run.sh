@@ -10,7 +10,6 @@ aws s3 cp ./databasebackup.tar.gz s3://$AWS_BUCKET/$AWS_PATH/$CURRENT_TIME/backu
 
 rm ./databasebackup.tar.gz
 
-
 curl -X POST -H 'Content-type: application/json' --data "{
   \"text\": \"[Backup::Success] $DB_NAME to $AWS_PATH S3\",
   \"attachments\": [
