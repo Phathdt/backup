@@ -1,0 +1,7 @@
+FROM alpine:3.18
+WORKDIR /
+RUN apk update
+COPY backup-core-server ./backup
+COPY /cmd/server/run.sh .
+
+ENTRYPOINT sh run.sh
