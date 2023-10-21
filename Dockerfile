@@ -1,7 +1,5 @@
-FROM amazon/aws-cli:2.13.28
-RUN apt-get update && apt-get install -y postgresql-client-15 pigz tar bash
-
+FROM alpine:3.18
 WORKDIR /app
+RUN apk update && apk add --no-cache postgresql-client pigz tar aws-cli
 COPY . .
-
 ENTRYPOINT sh run.sh
