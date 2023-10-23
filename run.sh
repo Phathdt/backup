@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SECONDS=0
+START_TIME=`date +%s`
 pg_dump -Z0 -j 10 -Fd $DB_NAME -U $DB_USERNAME -h $DB_HOST -p $DB_PORT -f dumpdir
 tar -cf - dumpdir | pigz -p 10 > databasebackup.tar.gz
 rm -rf dumpdir
@@ -11,7 +11,12 @@ aws s3 cp ./databasebackup.tar.gz s3://$AWS_BUCKET/$AWS_PATH/$CURRENT_TIME/backu
 
 rm ./databasebackup.tar.gz
 
-ELAPSED_TIME="$((SECONDS/3600))h $(((SECONDS/60)%60))m $((SECONDS%60))s"
+END_TIME=`date +%s`
+RUNTIMES=$((END_TIME-START_TIME))
+
+ELAPSED_TIME="$((RUNTIMES/3600))h $(((RUNTIMES/60)%60))m $((RUNTIMES%60))s"
+echo $ELAPSED_TIME
+
 
 curl -X POST -H 'Content-type: application/json' --data "{
   \"text\": \"[Backup::Success] $DB_NAME to $AWS_PATH S3\",
